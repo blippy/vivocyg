@@ -47,7 +47,7 @@ static HANDLE ghInstance;
 
 static void doit(void)
 {
-	system("start c:\\cygwin\\bin\\mintty -i c:\\cygwin\\Cygwin-vivo.ico /bin/ssh mcarter@vivo");
+	system("start c:\\cygwin\\bin\\mintty -i c:\\cygwin\\vivocyg\\Cygwin-vivo.ico /bin/ssh mcarter@vivo");
 	exit(0);
 }	
 int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
