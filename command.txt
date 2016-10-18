@@ -1,0 +1,1 @@
+start c:\\cygwin\\bin\\mintty -i c:\\cygwin\\vivocyg\\Cygwin-vivo.ico /bin/ssh mcarter@192.168.0.13

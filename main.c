@@ -17,6 +17,10 @@
 #include "main.h"
 
 #include <stdlib.h>
+#include <stdio.h>
+//#include <iostream.h>
+
+//typedef int bool;
 
 #define NELEMS(a)  (sizeof(a) / sizeof((a)[0]))
 
@@ -45,9 +49,42 @@ static HANDLE ghInstance;
  *                                                                          *
  ****************************************************************************/
 
+BOOL FileExists(LPCTSTR szPath)
+{
+  DWORD dwAttrib = GetFileAttributes(szPath);
+
+  return (dwAttrib != INVALID_FILE_ATTRIBUTES && 
+         !(dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
+}
+
 static void doit(void)
 {
-	system("start c:\\cygwin\\bin\\mintty -i c:\\cygwin\\vivocyg\\Cygwin-vivo.ico /bin/ssh mcarter@vivo");
+    char filename[ ] = "C:\\cygwin\\vivocyg\\command.txt"; 
+    //char *lpStr1;
+    //lpStr1 = buffer_1;
+	//bool exists = PathFileExists(lpStr1) == 1;
+	char default_command[] = "start c:\\cygwin\\bin\\mintty -i c:\\cygwin\\vivocyg\\Cygwin-vivo.ico /bin/ssh mcarter@192.168.0.13";
+	char *cmd = default_command;
+	//BOOL exists = FileExists(lpStr1);
+
+	#define CHUNK 1024 /* read 1024 bytes at a time */
+	char buf[CHUNK];
+	FILE *file;
+	size_t nread;
+
+	file = fopen(filename, "r");
+	if (file) {
+		nread = fread(buf, 1, sizeof(buf), file);
+		if(nread>0){
+			for(int i=0; i< nread; ++i) if(buf[i] == '\r' || buf[i] == '\n') buf[i] = '\0';
+			cmd = buf;
+		}
+		fclose(file);
+	} 	   
+
+
+
+	system(cmd);
 	exit(0);
 }	
 int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
