@@ -21,7 +21,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName=c:\cygwin\{#MyAppName}
 DefaultGroupName={#MyAppName}
-OutputBaseFilename=vivocyg-setup-1.0
+OutputBaseFilename=vivocyg-setup-2.0
 SetupIconFile=C:\cygwin\home\mcarter\repos.local\vivocyg\Cygwin-vivo.ico
 Compression=lzma
 SolidCompression=yes
@@ -34,8 +34,10 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "C:\cygwin\home\mcarter\repos.local\vivocyg\vivocyg.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\cygwin\home\mcarter\repos.local\vivocyg\Cygwin-vivo.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "vivocyg.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Cygwin-vivo.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "command.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "README.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
